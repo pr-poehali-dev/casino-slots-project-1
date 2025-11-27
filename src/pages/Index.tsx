@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import SlotMachine from '@/components/SlotMachine';
 
 interface Slot {
   id: number;
@@ -25,6 +26,8 @@ export default function Index() {
     { title: 'Super Jackpot', amount: 3245128, icon: 'Trophy' },
     { title: 'Mini Jackpot', amount: 524789, icon: 'Star' },
   ]);
+
+  const [activeSlot, setActiveSlot] = useState<string | null>(null);
 
   const slots: Slot[] = [
     { id: 1, name: 'Royal Fortune', image: '👑', jackpot: 15847362, category: 'Mega', hot: true },
@@ -139,7 +142,10 @@ export default function Index() {
                     </div>
 
                     <div className="flex gap-2">
-                      <Button className="flex-1 bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:scale-105 transition-transform glow-gold">
+                      <Button 
+                        className="flex-1 bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:scale-105 transition-transform glow-gold"
+                        onClick={() => setActiveSlot(slot.name)}
+                      >
                         <Icon name="Play" size={18} className="mr-2" />
                         Играть
                       </Button>
@@ -186,6 +192,10 @@ export default function Index() {
           </div>
         </div>
       </div>
+
+      {activeSlot && (
+        <SlotMachine slotName={activeSlot} onClose={() => setActiveSlot(null)} />
+      )}
     </div>
   );
 }
