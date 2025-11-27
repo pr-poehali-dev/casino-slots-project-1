@@ -84,11 +84,40 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-glow': {
+					'0%, 100%': {
+						opacity: '1',
+						boxShadow: '0 0 20px rgba(212, 175, 55, 0.4)'
+					},
+					'50%': {
+						opacity: '0.8',
+						boxShadow: '0 0 40px rgba(212, 175, 55, 0.6)'
+					}
+				},
+				'shimmer': {
+					'0%': {
+						backgroundPosition: '-1000px 0'
+					},
+					'100%': {
+						backgroundPosition: '1000px 0'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+				'shimmer': 'shimmer 3s linear infinite',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},
